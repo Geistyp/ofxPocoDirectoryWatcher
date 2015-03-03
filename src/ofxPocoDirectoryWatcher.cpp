@@ -22,25 +22,25 @@ void ofxPocoDirectoryWatcher::watch(string path, int eventMask /*= Poco::Directo
 
 void ofxPocoDirectoryWatcher::onItemAdded(const Poco::DirectoryWatcher::DirectoryEvent& event)
 {
-	ofSendMessage("Added:" + event.item.path());
+	ofSendMessage("Added | " + event.item.path());
 }
 
 void ofxPocoDirectoryWatcher::onItemModified(const Poco::DirectoryWatcher::DirectoryEvent& event)
 {
-	ofSendMessage("Modified:" + event.item.path());
+	ofSendMessage("Modified |" + event.item.path());
 }
 
 void ofxPocoDirectoryWatcher::onItemMovedFrom(const Poco::DirectoryWatcher::DirectoryEvent& event)
 {
-	ofSendMessage("MovedFrom:" + event.item.path());
+	ofSendMessage("MovedFrom |" + event.item.path());
 }
 
 void ofxPocoDirectoryWatcher::onItemMovedTo(const Poco::DirectoryWatcher::DirectoryEvent& event)
 {
-	ofSendMessage("MovedTo:" + event.item.path());
+	ofSendMessage("MovedTo |" + event.item.path());
 }
 
 void ofxPocoDirectoryWatcher::onItemRemoved(const Poco::DirectoryWatcher::DirectoryEvent& event)
 {
-	ofSendMessage("Removed:" + event.item.path());
+	ofSendMessage("Removed |" + event.item.path());
 }
