@@ -32,6 +32,20 @@ public:
 	*/
 	void watch(string path, int eventMask = Poco::DirectoryWatcher::DW_FILTER_ENABLE_ALL, int scanInterval = Poco::DirectoryWatcher::DW_DEFAULT_SCAN_INTERVAL);
 
+	/// Suspends sending of events. Can be called multiple times, but every
+	/// call to suspendEvent() must be matched by a call to resumeEvents().
+	void suspendEvents();
+
+	/// Resumes events, after they have been suspended with a call to suspendEvents().
+	void resumeEvents();
+
+	/// Returns true iff events are suspended.
+	bool eventsSuspended();
+
+	/// Returns true iff the platform supports DW_ITEM_MOVED_FROM/itemMovedFrom and
+	/// DW_ITEM_MOVED_TO/itemMovedTo events.
+	bool supportsMoveEvents();
+
 	void onItemAdded(const Poco::DirectoryWatcher::DirectoryEvent& event);			// Fired when a file or directory has been created or added to the directory.
 	void onItemModified(const Poco::DirectoryWatcher::DirectoryEvent& event);		// Fired when a file or directory has been modified.
 	void onItemMovedFrom(const Poco::DirectoryWatcher::DirectoryEvent& event);		// Fired when a file or directory has been renamed. This event delivers the old name.

@@ -44,3 +44,23 @@ void ofxPocoDirectoryWatcher::onItemRemoved(const Poco::DirectoryWatcher::Direct
 {
 	ofSendMessage("Removed|" + event.item.path());
 }
+
+void ofxPocoDirectoryWatcher::suspendEvents()
+{
+	watcher->suspendEvents();
+}
+
+void ofxPocoDirectoryWatcher::resumeEvents()
+{
+	watcher->resumeEvents();
+}
+
+bool ofxPocoDirectoryWatcher::eventsSuspended()
+{
+	return watcher->eventsSuspended();
+}
+
+bool ofxPocoDirectoryWatcher::supportsMoveEvents()
+{
+	return watcher->supportsMoveEvents();
+}
